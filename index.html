@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./app.js" defer type="module"></script>
+  <style>
+    .container {
+      width: 1024px;
+      margin: auto;
+    }
+    .form-group label {
+      display: inline-block;
+      margin-bottom: 1.5em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section>
+      <h1>Calculateur d'impots</h1>
+      <div class="form-group">
+        <label for="income">
+          Revenus
+          <input type="number" name="income" id="income" placeholder="Revenus">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="isCouple">
+          En couple :
+          <input type="checkbox" name="isCouple" id="isCouple">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="childs">
+          Nombre d'enfants
+          <input type="number" name="childs" id="childs" placeholder="Nombre d'enfants">
+        </label>
+      </div>
+      <hr>
+      <div>Revenus après impots <span id="result"></span></div>
+      <div>Detail par tranche <span id="detail"></span></div>
+    </section>
+    <section>
+      <h1>Calculateur d'impots inverse</h1>
+      <div class="form-group">
+        <label for="net_income">
+          Revenus  Net
+          <input type="number" name="income" id="net_income" placeholder="Revenus">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="isCouple_inverse">
+          En couple :
+          <input type="checkbox" name="isCouple" id="isCouple_inverse">
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="childs_inverse">
+          Nombre d'enfants
+          <input type="number" name="childs" id="childs_inverse" placeholder="Nombre d'enfants">
+        </label>
+      </div>
+      <hr>
+      <div>Revenus avant impots <span id="result_inverse"></span></div>
+    </section>
+  </div>
+</body>
+</html>
