@@ -23,20 +23,23 @@ export default {
     return { taxes, net: this.brut - taxes, detail: taxesBySlices }
   },
   computeBrut() {
-    let result = this.net
-    let next = true
+    let result = this.computeAproximativeBrut(this.net)
+    let computeTaxes
 
-    while (next) {
+    do {
+      result -= 1
       this.setBrut(result)
+
       const { taxes } = this.computeNet()
+      computeTaxes = taxes
+    } while (result - computeTaxes !== this.net)
 
-      if (result - taxes === this.net || result > this.net * 2) {
-        next = false
-      }
-
-      result += 1
-    }
     return this.brut
+  },
+  computeAproximativeBrut(net) {
+    const slice = this.slicesComputeNet.find(s => s.min < net && s.max > net)
+
+    return Math.round(net + net * slice.rate)
   },
   computeBase(income, parts) {
     if (parts === 0) {

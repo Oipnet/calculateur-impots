@@ -16,6 +16,10 @@ Given('An income of {float}k', function (income) {
   Calculator.setBrut(income * 1000)
 });
 
+Given('Precision is {int} €', function (precision) {
+  this.precision = precision
+});
+
 When('Calculate income Taxes', function () {
   this.actualAnswer = Calculator.computeNet()
 });
@@ -41,5 +45,5 @@ When('Calculate brut income', function () {
 });
 
 Then('Brut is {int} €', function (brut) {
-  assert.equal(this.actualAnswer , brut)
+  assert.equal(Math.abs(this.actualAnswer - brut) <= this.precision, true)
 });
